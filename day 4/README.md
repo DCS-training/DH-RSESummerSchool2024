@@ -14,7 +14,11 @@ Pull Requests. A basic familiarity with Git and the GitHub interface is recommen
 - Please make sure you have a [GitHub account](https://github.com/)
 - This workshop assumes basic knowledge of version control with Git. If you have not used Git before, please familiarize yourself with it by completing [this workbook on Git basics](https://docs.google.com/document/d/1uO8f0j62-5FkLkDHht9xOj-XFbr0RTF9sukWCig42vk/edit).
 
-#### On-the-day slides and instructions
+### On-the-day slides and instructions
 - Git, GitHub and Git flow slides(LINK)
 - [Step-by-step hands-on tutorial](https://docs.google.com/document/d/1tMo_0u7PE8aK_KfUpyWS7cDFQT4veq9wjNg2mNQE_ew/edit?usp=sharing)
 - Slido for progress tracking (LINK)
+
+### Credits
+
+The tutorial is based on materials from previous years created by Lydia France and Levan Bokeria (DH&RSE -  Cambridge 2023) and Kasra Hosseini, Mariona Coll Ardanuy and Federico Nanni (DH&RSE – Turing 2021)​
