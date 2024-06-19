@@ -17,8 +17,7 @@ Pull Requests. A basic familiarity with Git and the GitHub interface is recommen
 ### On-the-day slides and instructions
 - Git, GitHub and Git flow slides(LINK)
 - [Step-by-step hands-on tutorial](https://docs.google.com/document/d/1tMo_0u7PE8aK_KfUpyWS7cDFQT4veq9wjNg2mNQE_ew/edit?usp=sharing)
-- Slido for progress tracking (LINK)
-
+- [Slido for progress tracking](https://app.sli.do/event/qXprRRuwjBKm2ixVLUhojb)
 ### Credits
 
 The tutorial is based on materials from previous years created by Lydia France and Levan Bokeria (DH&RSE -  Cambridge 2023) and Kasra Hosseini, Mariona Coll Ardanuy and Federico Nanni (DH&RSE – Turing 2021)​
