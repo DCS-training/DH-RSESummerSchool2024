@@ -48,4 +48,6 @@ This a general overview of the schedule. All times are in UTC+1 (BST). More info
 * The Seshat Project
 * Living with Machines
 * Collaborative Coding
-  
+
+
+This repository is under construction and will have more details added closer to the event. 
