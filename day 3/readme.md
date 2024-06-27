@@ -17,7 +17,7 @@ an imagined scenario.
 - - Please send your GitHub username to neil.jakeman@kcl.ac.uk in advance of this workshop
 - Please also register for [Glitch](https://glitch.com/)
 - - We will use Glitch to remix a template web experience using the popular JS library A-Frame
-- Bring an object you would like to scan in 3D to become part of your exhibition
+- __**Bring an object you would like to scan in 3D to become part of your exhibition**__
 
 ### On-the-day slides and instructions
 - TO DO
