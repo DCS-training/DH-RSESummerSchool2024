@@ -33,7 +33,7 @@ This a general overview of the schedule. All times are in UTC+1 (BST). More info
 * Sustainable code for research - Introduction to Best Practices for Sustainable Code
 * Evaluating GitHub Repositories
 * Applying Best Practices for Sustainable Code
-### Day 3 July 4th - King's Digital Labs
+### Day 3 July 4th - King's Digital Lab
 *Talks*
 * Introduction & SSI Talk
 * Digital creative approaches for research and engagement
