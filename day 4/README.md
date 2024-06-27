@@ -2,7 +2,7 @@
 
 ## Collaborating on Code
 
-**Instructors**: Federico Nanni, Rosie Wood, Ed Chalstrey, Kaspar Beelen - The Alan Turing Institute
+**Instructors**: Federico Nanni, Rosie Wood, Ed Chalstrey, Kaspar Beelen, Kalle Westerling - The Alan Turing Institute
 
 Collaboratively writing and reviewing code is a crucial skill for working as part of a team. Keeping track of 
 outstanding issues and proposed solutions, as well as ensuring compatibility of code written by different team members 
