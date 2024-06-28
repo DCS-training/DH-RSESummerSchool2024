@@ -23,6 +23,8 @@ This a general overview of the schedule. All times are in UTC+1 (BST). More info
 *Talks*
 * Project Deep Dive - Coding my way out of a box: Achieving emancipation and collaboration through the Digital Humanities
 * DH&RSE at Edinburgh - What it means to work as an RSE in the Humanities and Social Sciences College at the University of Edinburgh.
+ 
+*Workshops*
 * Data Visualisation with R
 * Custom data visualisation with D3
 ### Day 2 July 3rd - Cambridge Digital Humanities
@@ -32,6 +34,8 @@ This a general overview of the schedule. All times are in UTC+1 (BST). More info
 * Careers Panel
 * Sustainable code for research - Introduction to Best Practices for Sustainable Code
 * Evaluating GitHub Repositories
+   
+*Workshops*
 * Applying Best Practices for Sustainable Code
 ### Day 3 July 4th - King's Digital Lab
 *Talks*
@@ -39,6 +43,8 @@ This a general overview of the schedule. All times are in UTC+1 (BST). More info
 * Digital creative approaches for research and engagement
 * Creative Technologist role in impact and engagement
 * Creation and Data types in 3D
+ 
+*Workshops*
 * Constructing an Immersive experience from a research scenario
 ### Day 4 July 5th - The Alan Turing Institute
 *Talks*
@@ -47,6 +53,8 @@ This a general overview of the schedule. All times are in UTC+1 (BST). More info
 * DH & RSE practices -MapReader, open-source software library for analysing large map collections
 * The Seshat Project
 * Living with Machines
+   
+*Workshops*
 * Collaborative Coding
 
 
