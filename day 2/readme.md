@@ -12,6 +12,7 @@ Sustainability is about ensuring the continued existence of your work, for yours
 - The workshop assumes basic knowledge of version control with Git. If you have not used Git before, please familiarize yourself with it by completing [this workbook on Git basics](https://docs.google.com/document/d/1uO8f0j62-5FkLkDHht9xOj-XFbr0RTF9sukWCig42vk/edit). **NB: This is the same preparation as required for Day 4 (Friday).**
 
 ### On-the-day slides and instructions
+- [Summer School sponsor talk: Society of Research Software Engineering (slides)](https://docs.google.com/presentation/d/1mpNCRzrIM_XhWbhsXWKah2c6jcT7iHTwQ2bVeiETZRA/edit?usp=sharing)
 - Coming soon
 
 ### Schedule
