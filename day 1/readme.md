@@ -90,17 +90,23 @@ Once you have R and R Studio installed, open R Studio
 The packages we are going to need for this workshop are the below
 for Part 1: 
 `install.packages("tidyverse")`
+
 `install.packages("palmerpenguins")`
 
 for Part 2:
 `install.packages("tmap")`
+
 `install.packages("sf")`
+
 `install.packages("RColorBrewer")`
 
 for Part 3:
 `install.packages("tidytext")`
+
 `install.packages("janeaustenr")`
+
 `install.packages("magick") `
+
 `install.packages("devtools")` 
 
 Please make sure to run the above packages ahead of time 
