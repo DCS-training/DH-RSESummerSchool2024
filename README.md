@@ -29,17 +29,18 @@ This a general overview of the schedule. All times are in UTC+1 (BST). More info
 * Custom data visualisation with D3
 ### Day 2 July 3rd - Cambridge Digital Humanities
 *Talks*
-* DH&RSE in Cambridge - Encouraging Sustainability in Digital Humanities Projects
+* Introduction & Society for Research Software Engineering talk
+* Encouraging Sustainability in Digital Humanities Projects
 * Bridging the Gap between Philology of Middle Eastern Texts and Data Science
 * Careers Panel
-* Sustainable code for research - Introduction to Best Practices for Sustainable Code
+* Introduction to Best Practices for Sustainable Code
 * Evaluating GitHub Repositories
    
 *Workshops*
 * Applying Best Practices for Sustainable Code
 ### Day 3 July 4th - King's Digital Lab
 *Talks*
-* Introduction & SSI Talk
+* Introduction & Software Sustainability Institute talk
 * Digital creative approaches for research and engagement
 * Creative Technologist role in impact and engagement
 * Creation and Data types in 3D
@@ -48,7 +49,7 @@ This a general overview of the schedule. All times are in UTC+1 (BST). More info
 * Constructing an Immersive experience from a research scenario
 ### Day 4 July 5th - The Alan Turing Institute
 *Talks*
-* Introduction & DHRSE IEUK network talk
+* Introduction & RSE in the Arts and Humanities Community Interest Group talk
 * Research Software Engineering in the Arts and Humanities: a community-driven approach
 * DH & RSE practices -MapReader, open-source software library for analysing large map collections
 * The Seshat Project
