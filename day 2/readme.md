@@ -30,3 +30,10 @@ Sustainability is about ensuring the continued existence of your work, for yours
 - 13:30-15:00 Workshop: **Applying Best Practices for Sustainable Code (Part 1)** (Lidea Shahidi)
 - 15:00-15:30 Break
 - 15:30-17:00 Workshop: **Applying Best Practices for Sustainable Code (Part 2)** (Lidea Shahidi)
+
+#### Repository links for Jonathan's talk and exercise
+
+These are all public repositories. In the talk I will be critiquing:
+
+- https://github.com/psf/requests
+- https://github.com/jonathanblaney/theses-urls
