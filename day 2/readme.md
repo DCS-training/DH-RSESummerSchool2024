@@ -37,3 +37,13 @@ These are all public repositories. In the talk I will be critiquing:
 
 - https://github.com/psf/requests
 - https://github.com/jonathanblaney/theses-urls
+
+In the exercise you can choose to look at one (or more) of these repositories. Different programming languages are represented here: how much does it matter if you know the particular language when you evaluate the repository? Some of these relate to academic projects and some do not: what difference does that make?  Some haven't been updated for a few years: does that mean you wouldn't use it?
+
+- https://github.com/aeon-toolkit/aeon [Python]
+- https://github.com/DrNickRedfern/SLviz  [R]
+- https://github.com/minicomp/wax [Ruby and Jekyll]
+- https://github.com/feili0820/BERTopic-on-Chinese-Education-in-Korea [Python]
+- https://github.com/junhewk/ktm [R]
+- https://github.com/magit/magit [Emacs Lisp]
+- https://github.com/crista/exercises-in-programming-style [Python...sort of]
