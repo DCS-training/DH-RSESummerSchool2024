@@ -1,6 +1,6 @@
 ---
-title: "Geographical Data Visualisation"
-author: "Ki Tong"
+title: "DH&RSE Data Visualisation with R"
+author: "Lucia Michielin"
 date: "`r Sys.Date()`"
 output: html_document
 editor_options: 
