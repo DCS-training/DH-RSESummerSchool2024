@@ -265,7 +265,7 @@ Pre-made colour and theme options also exist:
 
 In the interest of time we are going to see just one simple example but really the sky is the limit you can start having a look from this [wiki](http://www.sthda.com/english/wiki/ggplot2-colors-how-to-change-colors-automatically-and-manually)
 
-```{r theme2, echo = TRUE, warning=FALSE}
+```{r theme3, echo = TRUE, warning=FALSE}
 ggplot(penguins, aes(x=flipper_length_mm, y=body_mass_g, color=species)) +
   geom_point(size=3)+  theme_bw()+
   labs(title = "New plot title", subtitle = "A subtitle", caption = "(based on data from ...)", x = "New x label", y= "New y label", color = "Colours")+
@@ -906,14 +906,14 @@ img_animated
 Create a similar visualisation using a different datasets.
 You can have a look of what is directly available in R [here](https://github.com/EmilHvitfeldt/R-text-data?tab=readme-ov-file)
 
-```{r Exercise}
+```{r Exercise 6}
 
 
 ```
 
 Hint version using Sherlock books
 
-```{r Exercise, echo=FALSE}
+```{r Exercise 6.1, echo=FALSE}
 #devtools::install_github("EmilHvitfeldt/sherlock")
 #library(sherlock)
 
