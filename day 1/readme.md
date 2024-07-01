@@ -38,7 +38,7 @@ Below are the instructions for setting up on Posit or locally.
 2. Signup either via Gmail or GitHub
 3. Go on New Project
 4. New Project from Git Repository
-5. Copy and Paste this repository URL [https://github.com/DCS-training/DH-RSESummerSchool2024/day%1](https://github.com/DCS-training/DH-RSESummerSchool2024/day%1) as the Repository URL
+5. Copy and Paste this repository URL [https://github.com/DCS-training/DH-RSESummerSchool2024/tree/main/day%201/DataVisWithR](https://github.com/DCS-training/DH-RSESummerSchool2024/tree/main/day%201/DataVisWithR) as the Repository URL
 6. The Project directory name will filled in automatically
 
 #### Locally
@@ -90,7 +90,7 @@ _Linux_
 Once you have R and R Studio installed, open R Studio
 
 1.  Go to File>New Project> Version Control >Git
-2.  Enter the Repository URL [https://github.com/DCS-training/DH-RSESummerSchool2024/day%1](https://github.com/DCS-training/DH-RSESummerSchool2024/day%1)
+2.  Enter the Repository URL [https://github.com/DCS-training/DH-RSESummerSchool2024/tree/main/day%201/DataVisWithR](https://github.com/DCS-training/DH-RSESummerSchool2024/tree/main/day%201/DataVisWithR)
 3.  Select the Name for the directory project and where to save it
 4.  Press Create Project
 
