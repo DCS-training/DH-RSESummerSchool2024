@@ -12,8 +12,6 @@ Sustainability is about ensuring the continued existence of your work, for yours
 - The workshop assumes basic knowledge of version control with Git. If you have not used Git before, please familiarize yourself with it by completing [this workbook on Git basics](https://docs.google.com/document/d/1uO8f0j62-5FkLkDHht9xOj-XFbr0RTF9sukWCig42vk/edit). **NB: This is the same preparation as required for Day 4 (Friday).**
 
 ### Schedule
-
-- 08:40-09:00 Registration (Room 1.50)
 - 09.00-09:15 **Introduction & Society for Research Software Engineering talk** (Mary Chester-Kadwell)
 - 09.15-09:45 Talk: **Encouraging Sustainability in Digital Humanities Projects**
 - 09:45-10:15 Talk: **Bridging the Gap between Philology of Middle Eastern Texts and Data Science** [(Estara Arrant)](https://www.lib.cam.ac.uk/collections/departments/taylor-schechter-genizah-research-unit/unit-staff/dr-estara-arrant)
