@@ -131,11 +131,18 @@ Please make sure to run the above packages ahead of time
 
 ### Custom data visualisation with D3
 
-D3 is a popular JavaScript library for data visualization that lets you create fully custom visualizations. Observable is an online platform that lets you easily get started with D3, even if you have no prior experience with JavaScript. Observable notebooks let you upload and use data and are great for prototyping web-based data visualizations. This course will provide a basic introduction to the D3 library and the Observable platform, allowing you to build on these skills independently afterwards.
+#### Summary
+
+D3 is a popular JavaScript library for data visualization that lets you create fully custom visualizations. Observable is an online platform that lets you easily get started with D3, even if you have no prior experience with JavaScript. Observable notebooks let you upload and use data and are great for prototyping web-based data visualizations. This workshop will provide a basic introduction to the D3 library and the Observable platform, allowing you to build on these skills independently afterwards.
+
+#### Preparation
 
 To prepare, create an account on Observable at [https://observablehq.com/](https://observablehq.com/).
 
-The practice notebook we will use in the workshop can be found [here](https://observablehq.com/d/6ac8a1513f364b1d).
+#### Workshop Links
+
+- [Plastic waste dataset for sketching exercise](https://github.com/DCS-training/DH-RSESummerSchool2024/tree/main/day%201/custom-dataviz-d3-workshop/)
+- [Practice notebook on Observable](https://observablehq.com/d/6ac8a1513f364b1d).
 
 ## Licence of the material
 
