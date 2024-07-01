@@ -11,11 +11,6 @@ Sustainability is about ensuring the continued existence of your work, for yours
 - Please post your GitHub username in the Day 2 channel on Teams by **Tuesday 2 July**
 - The workshop assumes basic knowledge of version control with Git. If you have not used Git before, please familiarize yourself with it by completing [this workbook on Git basics](https://docs.google.com/document/d/1uO8f0j62-5FkLkDHht9xOj-XFbr0RTF9sukWCig42vk/edit). **NB: This is the same preparation as required for Day 4 (Friday).**
 
-### On-the-day slides and instructions
-- Summer School sponsor talk: Society of Research Software Engineering [slides](https://docs.google.com/presentation/d/1mpNCRzrIM_XhWbhsXWKah2c6jcT7iHTwQ2bVeiETZRA/edit?usp=sharing)
-- Introduction to Best Practices for Sustainable Code [slides](https://docs.google.com/presentation/d/1AcgG6ZgsKkul_8cDQsWbcrlQ3U44xcN8FPNQHoDRVKk/edit?usp=sharing)
-- More coming soon
-
 ### Schedule
 
 - 08:40-09:00 Registration (Room 1.50)
@@ -30,6 +25,11 @@ Sustainability is about ensuring the continued existence of your work, for yours
 - 13:30-15:00 Workshop: **Applying Best Practices for Sustainable Code (Part 1)** (Lidea Shahidi)
 - 15:00-15:30 Break
 - 15:30-17:00 Workshop: **Applying Best Practices for Sustainable Code (Part 2)** (Lidea Shahidi)
+
+### On-the-day slides and instructions
+- Summer School sponsor talk: Society of Research Software Engineering [slides](https://docs.google.com/presentation/d/1mpNCRzrIM_XhWbhsXWKah2c6jcT7iHTwQ2bVeiETZRA/edit?usp=sharing)
+- Introduction to Best Practices for Sustainable Code [slides](https://docs.google.com/presentation/d/1AcgG6ZgsKkul_8cDQsWbcrlQ3U44xcN8FPNQHoDRVKk/edit?usp=sharing)
+- More coming soon
 
 #### Repository links for Jonathan's talk and exercise
 
