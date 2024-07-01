@@ -1,0 +1,1075 @@
+---
+title: "Geographical Data Visualisation"
+author: "Ki Tong"
+date: "`r Sys.Date()`"
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: sentence
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Setting up
+
+Below is the setting up for this class (install packages, mount packages, import data)
+
+#### Install Packages
+
+Libraries we need to install (remember to uncomment before running)
+
+```{r Install Posit}
+# Set a CRAN mirror
+options(repos = c(CRAN = "https://cran.r-project.org"))
+# for Part 1: 
+#install.packages("tidyverse")
+#install.packages("palmerpenguins")
+
+# for Part 2:
+#install.packages("tmap")
+#install.packages("sf")
+#install.packages("RColorBrewer")
+
+# for Part 3:
+#install.packages("tidytext")
+#install.packages("janeaustenr")
+#install.packages("magick") 
+#install.packages("devtools")
+
+```
+
+#### Load Libraries
+
+Load the packages we need
+
+```{r load, results='hide', warning=FALSE, message=FALSE}
+# for part 1
+library(tidyverse)
+library(palmerpenguins)
+
+#for part 2
+library(tmap)
+library(sf)
+library(RColorBrewer)
+
+# for part 3
+library(tidytext) # to work with unstructured data
+library(janeaustenr) # to fetch the dataset
+library(magick) # to display images
+```
+
+# Part 1: Quick Overview of Grammar of Graphics
+
+For this first quick overview we are going to use our dear Palmer Penguins ![image](data/lter_penguins.png)
+
+Palmer Penguins is a great dataset for data exploration and visualisation a and generally a really good alternative to Iris or matcar.
+
+Data were collected and made available by [Dr.Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) and the [Palmer Station, Antarctica LTER](https://pallter.marine.rutgers.edu/), a member of the [Long Term Ecological Research Network](https://lternet.edu/).
+
+The palmerpenguins package contains two datasets.
+One is called `penguins`, and is a simplified version of the raw dataset, the second dataset is `penguins_raw` and contains the raw data.
+
+## Grammar of Graphics Levels
+
+![image](data/gglayers.png) - A set of rules to facilitate data visualisation developed by [Leland Wilkinson](https://link.springer.com/book/10.1007/0-387-28695-0).
+ - It allows us to think of plot generation by following a step by step recipe (and like all good recipes, can be modified when needed).
+ - For a full overview, check out [Hadley Wickham's free textbook](https://ggplot2-book.org/layers#introduction) on using ggplot.
+ - For inspiration on more complex plots and advanced techniques, [Cedric Sherer's blog](https://www.cedricscherer.com/tags/ggplot2/) is full of great ideas!
+
+The recipe of a nice plot includes:
+
+1)  The data
+2)  Aesthetic Mapping
+3)  Geometric Objects
+4)  Facets (Subplotting)
+5)  Statistical Transformations
+6)  Scaling and Changing Coordinates
+7)  Themes
+
+### Building our Plot
+
+-   Our first call is to use the function `ggplot()`
+-   By itself, it looks like this:
+
+```{r ggplot_function, echo = TRUE}
+
+ggplot()
+```
+
+### Level 1: Data
+
+The first level is just the data we are going to use
+
+-   From there, we need to specify the data we need.
+
+-   We can feed in the data as it is.
+
+However, at this stage our plot is still blank.
+
+```{r data_layer, echo = TRUE}
+
+
+# Regular data
+ggplot(data = penguins)
+
+
+```
+
+### Level 2: Aesthetics
+
+-   Our plots are empty as we've not told *R* what variables to use.
+-   Thankfully, the command is very simple, using the `aes()` command after specifying the data.
+-   Here we simply label our *x* and *y* coordinates.
+-   But as we will see, we still don't have any visual ques in the plot itself.
+
+```{r coordinates, echo = TRUE}
+head(penguins, 20)
+
+ggplot(penguins, aes(x=flipper_length_mm, y=body_mass_g))  # setting x and y
+
+```
+
+### Level 3: Geometries
+
+-   Here we link the **coordinates** from our **data** to visual geometries.
+-   We use geoms (geometric functions) to decide how to shape the coordinates.
+-   This allows us to shape our plot with our determined coordinates.
+-   We can also apply statistical functions with the geoms.
+-   We can place multiple geom layers.
+-   The order of our layers is determined by the order we code.
+
+```{r geoms, echo = TRUE, warning=FALSE}
+ggplot(penguins, aes(x=flipper_length_mm, y=body_mass_g)) +
+  geom_point()
+```
+
+Now that we can finally see something let's refine the coordinates/aesthetics a bit more playing with colours and shapes
+
+```{r geoms2, echo = TRUE, warning=FALSE}
+ggplot(penguins, aes(x=flipper_length_mm, y=body_mass_g, color=species)) +
+  geom_point()
+```
+
+It is not the best of ideas but we can also use shape to add an additional layer of information
+
+```{r geoms3, echo = TRUE, warning=FALSE}
+ggplot(penguins, aes(x=flipper_length_mm, y=body_mass_g, color=species, size=flipper_length_mm)) +
+  geom_point()
+```
+
+NB.
+if you want colour and size to be connected with a variable (i.e. being part of the legend you set them up within the aesthetics otherwise they goes in the geometry layer)
+
+```{r geoms4, echo = TRUE, warning=FALSE}
+ggplot(penguins, aes(x=flipper_length_mm, y=body_mass_g, color=species)) +
+  geom_point(size=4)
+```
+
+### Level 4: Facet
+
+If we want to subdivide the plot in more subplot you can use `facet_wrap` or `facet_grid`
+
+`facet_wrap` is to be used if you want to subplot only by one variable
+
+```{r facet, echo = TRUE, warning=FALSE}
+ggplot(penguins, aes(x=flipper_length_mm, y=body_mass_g, color=species)) +
+  geom_point()+
+  facet_wrap(~species)
+```
+
+`facet_grid`if you want to create an array across two variables
+
+```{r facet2, echo = TRUE, warning=FALSE}
+ggplot(penguins, aes(x=flipper_length_mm, y=body_mass_g, color=species)) +
+  geom_point()+
+  facet_grid(sex~species)
+```
+
+### Level 5: Adding statistical layers
+
+-   Here we can model visualise any model we've used in our analyses.
+-   This is a vital step for communicating our research.
+-   It's also a fundamental step in validating our findings.
+-   R has so many options for visualising our models! From loess and linear models, to means and standard deviations.
+
+```{r stat, echo = TRUE, warning=FALSE}
+
+ggplot(data = penguins,
+  aes(x = species, y = flipper_length_mm))+
+  geom_boxplot()+ 
+  stat_summary(fun.data = mean_se,
+    color = "red") # adjusting size
+  
+```
+
+### Level 6: Coordinates
+
+On this level you can set the attributes of the coordinates, change the scale or transform
+
+```{r coord, echo = TRUE, warning=FALSE}
+
+ggplot(data = penguins,
+  aes(x = species, y = flipper_length_mm))+
+  geom_boxplot()+ 
+  stat_summary(fun.data = mean_se,
+    color = "red")+
+  coord_flip()
+  
+```
+
+### Level 7: Themes and Global Settings
+
+On this level you can set everything that is not connected directly with the data, from background to colours and axis labels.
+
+#### Backgrounds
+
+Change the background to Black and White
+
+```{r theme, echo = TRUE, warning=FALSE}
+
+ggplot(penguins, aes(x=flipper_length_mm, y=body_mass_g, color=species)) +
+  geom_point(size=3)+
+  theme_bw()
+
+  
+```
+
+#### Labels
+
+Add Title, subtitle etc..
+
+```{r theme2, echo = TRUE, warning=FALSE}
+ggplot(penguins, aes(x=flipper_length_mm, y=body_mass_g, color=species)) +
+  geom_point(size=3)+  theme_bw()+
+  labs(title = "New plot title", subtitle = "A subtitle", caption = "(based on data from ...)", x = "New x label", y= "New y label", color = "Colours")
+
+```
+
+#### Colours
+
+This is my favourite rabbit hole.
+
+-   Some journals will require certain stylistic designs for your figures.
+-   This will include colour schemes, but also includes fonts and other design features.
+-   Thankfully ggplot allows us to control these aspects of the plot with full customisation options as well.
+
+Pre-made colour and theme options also exist:
+
+-   [Journal color schemes](https://cran.r-project.org/web/packages/ggsci/vignettes/ggsci.html#Introduction)
+
+-   [Theme options](https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/)
+
+-   [Wes Anderson Color Scheme](https://github.com/karthik/wesanderson)
+
+In the interest of time we are going to see just one simple example but really the sky is the limit you can start having a look from this [wiki](http://www.sthda.com/english/wiki/ggplot2-colors-how-to-change-colors-automatically-and-manually)
+
+```{r theme2, echo = TRUE, warning=FALSE}
+ggplot(penguins, aes(x=flipper_length_mm, y=body_mass_g, color=species)) +
+  geom_point(size=3)+  theme_bw()+
+  labs(title = "New plot title", subtitle = "A subtitle", caption = "(based on data from ...)", x = "New x label", y= "New y label", color = "Colours")+
+  scale_colour_manual(values = c("darkorange","purple","cyan4"))
+
+```
+
+N.B.
+depending on the graph type it could be fill/colour
+
+### Exercise 1:
+
+Create a visualisation using the Penguins dataset that will show the relationship between bill length and bill depth across the different species of penguins and the different sexes.
+Rename the graph "My Penguin Graph" and transform the units of measurements in cm (Tip: you can divide x and y directly in the aesthetic and use the labs level)
+
+```{r exercise 1, echo = TRUE, warning=FALSE}
+ggplot( )
+
+```
+
+Ok now that we have cover some basics let's focus on something funnier, first some geographical plotting and then sentiment analysis results
+
+# Part2: Geographical Data
+
+For this part For the History of Scotland-focused text analysis, we are going to explore the [Statistical Accounts of Scotland](https://collectionsmanager.is.ed.ac.uk/handle/10683/119269).
+More information on the dataset can be found on the [StatAccount Website](https://stataccscot.edina.ac.uk/static/statacc/dist/home).
+The 'Old' Statistical Account (1791-99), under the direction of Sir John Sinclair of Ulbster, and the 'New' Statistical Account (1834-45) are reports of life In Scotland during the XVIII and XIX centuries.
+
+They offer uniquely rich and detailed parish reports for the whole of Scotland, covering a vast range of topics including agriculture, education, trades, religion and social customs.
+
+We are also going to use edited data from the [National Records of Scotland](https://www.nrscotland.gov.uk/statistics-and-data/geography/our-products/other-national-records-of-scotland-nrs-geographies-datasets/historic-civil-parishes-pre-1891)
+
+## Import Data
+
+Import the data that we will need
+
+### Import the Statistical Account Data
+
+First the CSV containing the text of the StatAccount
+
+```{r csv}
+Parish <- read_csv("data/parish.csv")
+summary(Parish)
+```
+
+### Import the Geographical Data
+
+Then we import the first GeoPackage.
+A GeoPackage is an open, standards-based format designed for the efficient storage, transfer, and exchange of geospatial data.
+Developed by the Open Geospatial Consortium (OGC), it serves as a container for various types of geospatial information, including vector features, raster maps, and attribute data, all within a single file <https://www.geopackage.org/>.
+
+st_read Function: \* from st package that reads vector spatial data.
+\* dsn = data source name, essentially the file name and the folder path
+
+```{r Gpkg1, warning=FALSE}
+ParishesGeo <- st_read(dsn = "data/Spatial/Parishes.gpkg")
+plot(ParishesGeo, main = "Scottish Parishes")
+```
+
+As you can see from the plot, the dataset is made up of vector polygons.
+You can also change the basic presentation, such as the colour of the fill, line width and colour.
+
+```{r Gpkg2 }
+plot(ParishesGeo,
+     col = "black",
+     lwd = 1,
+     border = "white",
+     main = "Scottish Parishes")
+```
+
+Besides the parish boundaries, we will also need the location of distilleries across Scotland.
+Load geo-spatial information for the location of distilleries.
+This is a vector point dataset.
+
+```{r Gpkg4}
+PointsDistilleries<- st_read(dsn = "data/Spatial/ScottishDistilleries.gpkg")
+
+
+plot(PointsDistilleries,
+     main = "Scottish Distilleries")
+```
+
+We will work with first, the vector polygons containing the parish boundaries.
+At the moment, the vector polygon dataset contains only info from the Geopackage.
+To add the info from the parish dataset (i.e. information from the csv file) we need to merge the Geopackage with it.
+
+## Work on Illness Mentions
+
+### Extract Information from the textual data
+
+Because we want to see how often mention of a certain topic are present in the text we want to search for specific keywords
+
+The first topic we are going to look at is Illness.
+So we are creating a new variable that would contain yes if the text contains one of the keywords or no if it does not
+
+1.Search keywords
+
+```{r }
+Parish$Ilness<- ifelse(grepl("ill|ilness|sick|cholera|smallpox|plague|cough|typhoid|fever|measles|dysentery", Parish$text,
+                             ignore.case = T), "yes","no")
+
+head(Parish$Ilness)
+```
+
+2.  Group by Illness and geographical area
+
+To do this we use a pipe, if you have never seen a pipe before is basically a way to perform a series of action on a dataset in a certain order (you can think at it as bullet points of actions)
+
+```{r }
+IlnessGroup <- Parish %>%
+  group_by(Area) %>%
+  summarise(Total = n(),
+            count = sum(Ilness == "yes")) %>%
+  mutate(per = round(count/Total, 2))
+
+head(IlnessGroup)
+```
+
+3.Merge the two datasets
+
+```{r }
+MergedGeo <-merge(ParishesGeo,IlnessGroup,
+                  by.x="JOIN_NAME_",
+                  by.y="Area",
+                  all.x = TRUE) # nb this is left join cause I want to preserve all the records present in ParishGeo
+
+```
+
+4.Check data to have merged properly
+
+```{r }
+head(MergedGeo, max.level = 2)
+```
+
+### Visualise the new dataset
+
+1.Create a continuous color palette
+
+```{r }
+color.palette <- colorRampPalette(c("white", "red"))
+```
+
+2.  Spatial plot using tmap
+
+tm_shape is a function in the tmap package (Thematic maps).
+Thematic maps can be generated with great flexibility.
+The syntax for creating plots is similar to that of ggplot2, but tailored to maps.
+To plot a tmap, you will need to specify firstly tm_shape, layers then can be added with the + operator.
+tm_fill specifies the presentation of the polygons.
+To differentiate NA values from other valid entries, colorNA is added.
+
+-   col.regions = color.palette(100): specifies the colour to fill the polygon, now set to generate a palette with 100 distinct colours.
+
+```{r }
+
+tm_shape(MergedGeo) + # Specify the spatial object (MergedGeo) to be used in the map
+  tm_fill("per", palette = color.palette(100), colorNA = "grey") + # Fill polygons based on 'per' variable, using a custom color palette with 100 colors; grey for NA values
+  tm_borders(col = "black") + # Add black borders to each polygon
+  tm_layout(title = "Illness report", legend.text.size = 0.75, legend.title.size = 1, frame = FALSE) # Set layout: add a title, resize legend text and title, remove frame
+
+
+```
+
+### Work with map colours
+
+Let's try changing the colour of the filled regions using predifined colours.
+There are predifined colour palettes you can use directly.
+Commonly used palettes include: rainbow(), heat.colors(), topo.colors(), and terrain.colors() Beware of the representation of colours.
+You might need to reverse the colour band to make the representations more intuitive.
+
+```{r }
+tm_shape(MergedGeo) + # Specify the spatial object (MergedGeo) to be used in the map
+  tm_fill("per", palette = rev(heat.colors(100)), colorNA = "grey") + # Fill polygons based on 'per' variable, using a reversed heat.colors palette with 100 colors; grey for NA values
+  tm_borders(col = "black") + # Add black borders to each polygon
+  tm_layout(title = "Illness report", legend.text.size = 0.75, legend.title.size = 1, frame = FALSE) # Set layout: add a title, resize legend text and title, remove frame
+
+```
+
+You could also change the colour using RColorBrewer
+
+```{r }
+
+display.brewer.all()# show all the palettes in Colour brewer
+color.palette <- brewer.pal(n = 9, name = "YlOrRd")#create a tailored new palette
+```
+
+We can now replot using the new palette.
+
+```{r }
+tm_shape(MergedGeo) + # Specify the spatial object (MergedGeo) to be used in the map
+  tm_fill("per", palette = color.palette, colorNA = "grey") + # Fill polygons based on 'per' variable, using a custom color palette (color.palette); grey for NA values
+  tm_borders(col = "black") + # Add black borders to each polygon
+  tm_layout(title = "Illness report", legend.text.size = 0.75, legend.title.size = 1, frame = FALSE) # Set layout: add a title, resize legend text and title, remove frame
+
+
+```
+
+#### Exercise 2
+
+Try to re-plot the map using a different colour range.
+Add your code below.
+
+```{r }
+
+```
+
+### Work on the legend intervals
+
+Change the spacing of the interval.
+The intervals can be keyed in directly using and style to change the type of breaks
+
+1\.
+"fixed": User-defined fixed breaks.
+
+2\.
+"pretty": Breaks at pretty intervals (often used for visual appeal).
+
+3\.
+"quantile": Breaks at quantile intervals (each class has an equal number of observations).
+
+4\.
+"equal": Breaks at equal intervals.
+
+5\.
+"kmeans": Breaks determined by k-means clustering.
+
+6\.
+"hclust": Breaks determined by hierarchical clustering.
+
+7\.
+"bclust": Breaks determined by bin-based clustering.
+
+8\.
+"fisher": Breaks determined by Fisher-Jenks natural breaks optimization.
+
+9\.
+"jenks": Another name for Fisher-Jenks breaks.
+
+10\.
+"sd": Breaks determined by standard deviations from the mean.
+
+11\.
+"log10_pretty": Breaks determined by log10 transformed values with pretty intervals.
+
+12\.
+"cont": Continuous color scale (no discrete breaks).
+
+```{r }
+tm_shape(MergedGeo) + # Specify the spatial object (MergedGeo) to be used in the map
+  tm_fill("per", style = "equal", n = 10, palette = color.palette, colorNA = "grey") + # Fill polygons based on 'per' variable; use equal interval classification with 10 classes; custom color palette; grey for NA values
+  tm_borders(col = "black") + # Add black borders to each polygon
+  tm_layout(title = "Illness report", legend.text.size = 0.75, legend.title.size = 1, frame = FALSE, legend.position = c(1, 0.5)) # Set layout: add a title, resize legend text and title, remove frame, position legend at (1, 0.5)
+
+```
+
+#### Exercise 3:
+
+Try adjusting these values and explore the effects.
+Write your code below.
+
+```{r }
+
+```
+
+## Now we can work on a different subject: Witches
+
+The steps are always the same first we need to search keywords and then we merge the results with our map of Scotland.
+
+If you want to try out yourself more instead of looking at the code below try to replicate the steps we have done before for the illnesses below here.
+
+```{r }
+
+#Parish$witches<-ifelse
+
+```
+
+### Preparing the data set
+
+```{r }
+Parish$witches<- ifelse(grepl("witch|spell|witches|enchantemt|magic", Parish$text, ignore.case = T), "yes","no")
+```
+
+Can you think to other keywords?
+just add them to the code above.
+
+Then we group by
+
+```{r }
+WitchGroup <- Parish %>%
+  group_by(Area) %>%
+  summarise(Total = n(), count = sum(witches == "yes")) %>%
+  mutate(per = round(count / Total, 2))
+
+```
+
+And finally we merge
+
+```{r }
+MergedGeo2 <-merge(ParishesGeo,WitchGroup, by.x="JOIN_NAME_", by.y="Area", all.x = TRUE) # nb this is left join cause I want to preserve all the records present in ParishGeo
+```
+
+Let's create a more "witchy" Palette
+
+```{r }
+color.palette2 <- colorRampPalette(c("white", "purple"), alpha = 0.5)
+```
+
+### Plot the result
+
+```{r }
+tm_shape(MergedGeo2) +
+  tm_fill("per", palette = color.palette2(100), colorNA = "grey") +
+  tm_borders(col = "black")+
+  tm_layout(title = "Witchcraft report",
+            legend.text.size = 0.75,
+            legend.title.size = 1,
+            frame = FALSE)
+
+```
+
+### Refine the results:Adding scale bar and north arrow
+
+Adding the scale bar and north arrow to the map using tmap is a lot simpler.
+
+```{r }
+tm_shape(MergedGeo2) +
+  tm_fill("per",
+          style = "equal",
+          n = 5,
+          palette = color.palette2(100),
+          colorNA = "grey") +
+  tm_borders(col = "black")+
+  tm_layout(title = "Witches Reports",
+            legend.text.size = 0.75,
+            legend.title.size = 1,
+            frame = FALSE) +
+  tm_scale_bar(position = "left") + #add scalebar
+  tm_compass(size = 1.5)#add north arrow
+```
+
+## Whiski consumption
+
+Let's connect back to the one of the main topics of this week and look at whiski consumption across Scotland.
+
+Unsurprisingly the first steps remain the same.
+
+If you want to try out yourself more instead of looking at the code below try to replicate the steps we have done before below here.
+
+```{r }
+
+#Parish$Booze<-ifelse
+
+```
+
+1.  Search the keywords
+
+```{r }
+Parish$Booze<- ifelse(grepl("illicit still|illicit distillery|drunk|intemperance|wisky|whisky|whiskey|whysky |alembic",Parish$text, ignore.case = T), "yes","no")
+```
+
+2.  Group by the new column and area
+
+```{r }
+BoozeGroup <- Parish %>%
+  group_by(Area) %>%
+  summarise(Total = n(), count = sum(Booze == "yes")) %>%
+  mutate(per = round(count / Total, 2))
+
+```
+
+3.  Merge back
+
+```{r }
+MergedGeo3 <-merge(ParishesGeo,BoozeGroup, by.x="JOIN_NAME_", by.y="Area",all.x = TRUE) # nb this is left join cause I want to preserve all the records present in ParishGeo
+
+```
+
+4.  Create a Palette
+
+```{r }
+color.palette3 <- colorRampPalette(c("white", "Brown"))
+
+```
+
+5.  Plot with tmap
+
+```{r }
+tm_shape(MergedGeo3) +
+  tm_fill("per",
+          style = "equal",
+          n = 5,
+          palette = color.palette3(100),
+          colorNA = "grey") +
+  tm_borders(col = "black")+
+  tm_layout(title = "Whisky Reports",
+            legend.text.size = 0.75,
+            legend.title.size = 1,
+            frame = FALSE) +
+  tm_scale_bar(position = "left") +
+  tm_compass(size = 1.5)
+
+```
+
+### Work with multiple datasets
+
+Add the second dataset i.e. the punctual dataset with the location of the modern day distilleries.
+
+```{r }
+
+tm_shape(MergedGeo3) +
+  tm_fill("per",
+          style = "equal",
+          n = 5,
+          palette = color.palette3(100),
+          colorNA = "grey") +
+  tm_borders(col = "black")+
+  tm_layout(title = "Whisky Reports",
+            legend.text.size = 0.75,
+            legend.title.size = 1,
+            frame = FALSE) +
+  tm_scale_bar(position = "left") +
+  tm_compass(size = 1.5)+
+  tm_shape(PointsDistilleries) + # we add our new datest
+  tm_dots(size=0.1,
+          col="black", #This time they are dots rather than fill
+          colorNA = NULL)
+
+```
+
+We can also use bespoke symbols for distilleries locations and plot it again.
+
+```{r }
+icon <- tmap_icons("data/bottle.png") 
+
+tm_shape(MergedGeo3) + 
+  # Fill the polygons based on the "per" attribute
+  tm_fill("per", 
+          style = "equal",  # Use equal interval breaks
+          n = 5,  # Number of classes to divide the data into
+          palette = color.palette3(100),  # Color palette with 100 color levels
+          colorNA = "grey") +  # Color for missing values
+  # Add borders to the polygons
+  tm_borders(col = "black") +
+  # Add another spatial object to the map
+  tm_shape(PointsDistilleries) +
+  # Add symbols (icons) for the spatial points
+  tm_symbols(size = 0.3, # Size of the symbols
+             clustering = TRUE,
+             shape = icon,# Symbol shape (specified by the 'icon' variable)
+             border.lwd = 0,) +   # Border width of the symbols 
+  # Add layout elements like title and legend settings
+  tm_layout(title = "Booze Reports",  # Title of the map
+            legend.text.size = 0.75,  # Size of the legend text
+            legend.title.size = 1,  # Size of the legend title
+            frame = FALSE) +  # Do not draw a frame around the map
+  # Add a scale bar to the map
+  tm_scale_bar(position = "left") +  # Position of the scale bar
+  # Add a compass to the map
+  tm_compass(size = 1.5)  # Size of the compass
+```
+
+### Exercise 5:
+
+Search for a different topic in the dataset and create a new visualisation
+
+```{r }
+
+```
+
+# Part 3: Working with Sentiment Analysis Data
+
+Download and look at the bing sentiment library
+
+```{r }
+get_sentiments("bing")
+```
+
+This is a short demo to show how you can create a .gif that would record the sentiment evolution across Jane Austen books.
+To do so we need to follow these steps
+
+1.  Create a Table where we are going to automatically extract each word in Jane Austen books.
+2.  Calculate the sentiment values for subset of each chapters
+3.  Plot a graph for each book that will show the sentiment values
+4.  Collate the single graphs into a single gif
+
+### 1. Create a word collection table
+
+For each words we are going to collect information about
+
+-   the book it belongs to
+-   the line number where it could be found
+-   the chapter where it could be found
+-   the word itself
+
+```{r Austen table}
+AustenTable <- austen_books() %>% #create a new file named AustenTable that will extract info from austen_books
+  group_by(book) %>% # group by every single book then
+  mutate( # manipulate the data to create
+    linenumber = row_number(), # a line number column that would count in which row the word was
+    chapter = cumsum(str_detect(text, # the chapter number. We can do so by using regex and find lines starting with chapter followed by a space and a letter 
+                                regex("^chapter [\\divxlc]", 
+                                      ignore_case = TRUE)))) %>%
+  ungroup() %>% #  This line removes the grouping, so subsequent operations will be applied to the entire dataset rather than grouped subsets.
+  unnest_tokens(word, text) # This tokenises the text column, splitting it into individual words and creating a new row for each word
+
+head(AustenTable)
+```
+
+### 2. Create a word collection table
+
+Now that we have the list of all words we extract the average sentiment of subsets of each chapter of each book.
+To do so as before we manipulate our dataset to do what we want.
+
+Because we want to create an uniform pattern that would simulate a tapestry we want to divide our subset into equal collections of words
+
+```{r Austen Sentiment}
+jane_austen_sentiment <- AustenTable %>% # Load Jane Austen's books dataset and start a chain of operations to create a Jane_austen_sentiment dataset
+  inner_join(get_sentiments("bing"), relationship = 'many-to-many') %>% # Join the dataset with the Bing lexicon sentiment dictionary
+  group_by(book, chapter) %>%   # Group the dataset by book and chapter
+  mutate(index = rep(1:10, each = ceiling(n() / 10), length.out = n())) %>% # Create an index to split the chapters into 10 segments no matter how long the chapter it is 
+  group_by(book, chapter, index) %>% # Regroup the dataset by book, chapter, and index
+  count(sentiment) %>%  # Count the occurrences of each sentiment within each segment
+  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %>% # Reshape the data from long to wide format
+  mutate(sentiment = positive - negative,index= as.factor(index))%>%  # Calculate sentiment score (positive - negative) for each segment
+  filter(!chapter=="0") # Filter out chapters with the value "0" (if any)
+
+head(jane_austen_sentiment)
+```
+
+### 3. Plot a graph for each book
+
+Plot a graph for each book that will show the sentiment values tapestry across the book To do so we need to do a series of small steps
+
+#### A. Create a directory to which the images will be written
+
+```{r Austen directory}
+dir_out <- file.path("outputs/Austen") # Define the directory path where the outputs will be saved
+dir.create(dir_out, recursive = TRUE) # Create the directory if it doesn't already exist
+```
+
+#### B. List all the books that are inside our dataset
+
+```{r Austen List of Books}
+books <- unique(jane_austen_sentiment$book)
+books 
+```
+
+#### C. Find which is the max number of chapters each book has
+
+```{r Books with more chapters}
+most_chapter <- max(jane_austen_sentiment$chapter, na.rm = TRUE)# Find the maximum chapter number in the dataset 'jane_austen_sentiment'
+most_chapter
+```
+
+#### D. Print a graph for each book using a for loop
+
+Now we have all that we need to create a for loop that will automatically create a graph for each book.
+A "for" loop is a control flow statement in programming languages that allows you to repeatedly execute a block of code a specified number of times or iterate over a sequence of values.
+
+```{r Printing For Loop}
+for (y in books) {# Iterate over each book in the 'books' vector y is the name we are going to the iteration variable it can be anything as long as you are consistent
+  
+  p <- # p is just a name we are giving to the plot again you can change it as long as you are consistent
+    jane_austen_sentiment %>%
+    filter(book == y) %>% # Filter the 'jane_austen_sentiment' dataset for the current book
+    ggplot(aes(chapter,index, fill= sentiment)) +  # Create a ggplot object with chapter, index, and sentiment as aesthetics
+    geom_tile() +# Add a tile layer to create a heatmap
+    scale_x_continuous(breaks=seq(1,most_chapter,1), expand = c(0,0))+  # Customise x-axis scale to show breaks from 1 to 'most_chapter'
+    scale_fill_gradient(low="blue", high="red", limits = c(-20, 40))+# Customise fill scale to use a gradient from blue to red
+    theme_bw()+ # Apply a black-and-white theme
+    guides(fill="none")+  # Remove the fill legend
+    ggtitle(y)+ # Add a title to the plot with the current book's name
+    coord_fixed(ratio = 1, ylim = c(10,1), xlim = c(0.5,most_chapter+0.5))+  # Fix the aspect ratio and set limits for y and x axes
+    theme(  # Customize theme to remove y-axis labels and ticks
+      axis.title.y = element_blank(),
+      axis.text.y= element_blank(),
+      axis.ticks.y = element_blank()
+    )
+  
+  fp <- file.path(dir_out, paste0(y, ".png"))# Define the file path where the plot will be saved
+  
+  ggsave(plot = p,  # Save the ggplot object as a PNG file
+         filename = fp,   # File path where the plot will be saved
+         device = "png", # Output device type (PNG format)
+         width=3500,# Width of the output in pixels
+         height = 1000, # Height of the output in pixels
+         units = "px") # Units of width and height (pixels)
+  
+}# Close the loop
+```
+
+The bit of code below it is just to look at one of the plots created
+
+```{r Look at one of the plots}
+Image <- image_read('outputs/Austen/Emma.png')
+Image
+```
+
+Good!
+We are almost there now we need to create a gif out of the single plots
+
+### 4. Create and Save a gif
+
+#### A. List file names and read in
+
+```{r Look what is inside the folder}
+imgs <- list.files(dir_out, full.names = TRUE) # List all file names in the directory 'dir_out' and store them in 'imgs'
+img_list <- lapply(imgs, image_read)  # Read each image file from the list of file names using 'image_read' and store them in 'img_list'
+```
+
+#### B. Join the images together
+
+```{r join the images}
+img_joined <- image_join(img_list) # Join the list of images into a single animated image using 'image_join'
+```
+
+#### C. Animate 1 frame per second
+
+```{r Animate 1 frame per second}
+img_animated <- image_animate(img_joined, fps = 1) # Create an animated image from the joined image with a frame rate of 1 frame per second using 'image_animate'
+```
+
+#### D. Save to disk
+
+```{r Save to disk}
+image_write(image = img_animated,
+            path = "outputs/austen.gif")
+```
+
+Let's look at what we have done
+
+```{r look at the gif}
+img_animated
+```
+
+### Excercise 6:
+
+Create a similar visualisation using a different datasets.
+You can have a look of what is directly available in R [here](https://github.com/EmilHvitfeldt/R-text-data?tab=readme-ov-file)
+
+```{r Exercise}
+
+
+```
+
+Hint version using Sherlock books
+
+```{r Exercise, echo=FALSE}
+#devtools::install_github("EmilHvitfeldt/sherlock")
+#library(sherlock)
+
+#SherlockTable <- holmes %>% 
+#  group_by() %>% # group by every single book then
+ # mutate( # manipulate the data to create
+ #   linenumber = row_number(), # a line number column that would count in which row the word was
+ #   chapter = ... %>%
+ # ungroup() %>% #  This line removes the grouping, so subsequent operations will be applied to the entire dataset rather than grouped subsets.
+#  unnest_tokens(...) # This tokenises the text column, splitting it into individual words and creating a new row for each word
+
+#head(SherlockTable)
+
+#Sherlock_sentiment <- SherlockTable %>% 
+#  inner_join(get_sentiments("bing"), relationship = ...) %>% # Join the dataset with the Bing lexicon sentiment dictionary
+ # group_by(...) %>%   # Group the dataset by book and chapter
+ # mutate(index = rep(1:10, each = ceiling(n() / 10), length.out = n())) %>% # Create an index to split the chapters into 10 segments no matter how long the chapter it is 
+#  group_by(book, chapter, index) %>% # Regroup the dataset by book, chapter, and index
+#  count(sentiment) %>%  # Count the occurrences of each sentiment within each segment
+#  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %>% # Reshape the data from long to wide format
+#  mutate(...)%>%  # Calculate sentiment score (positive - negative) for each segment
+#  filter(!chapter=="0") # Filter out chapters with the value "0" (if any)
+
+#head(Sherlock_sentiment)
+
+#dir_outS <- file.path("outputs/Sherlock") # Define the directory path where the outputs will be saved
+#dir.create(dir_outS, recursive = TRUE) # Create the directory if it doesn't already exist
+
+#books2 <- unique(...)
+#books2 
+
+#most_chapter <- max(...)# Find the maximum chapter number in the dataset 
+#most_chapter
+
+#for (y in books2) {# Iterate over each book in the 'books' vector y is the name we are going to the iteration variable it can be anything as long as you are consistent
+  
+ # p <- # p is just a name we are giving to the plot again you can change it as long as you are consistent
+    #Sherlock_sentiment %>%
+   # filter(...) %>% 
+   # ggplot(aes(...)) +  # Create a ggplot object with chapter, index, and sentiment as aesthetics
+  #  geom_tile() +# Add a tile layer to create a heatmap
+   # scale_x_continuous(breaks=seq(1,most_chapter,1), expand = c(0,0))+  # Customise x-axis scale to show breaks from 1 to 'most_chapter'
+  #  scale_fill_gradient(..., limits = c(-20, 40))+# Customise fill scale to use a gradient from blue to red
+  #  theme_bw()+ # Apply a black-and-white theme
+  #  guides(fill="none")+  # Remove the fill legend
+  #  ggtitle(...)+ # Add a title to the plot with the current book's name
+   # coord_fixed(...)+  # Fix the aspect ratio and set limits for y and x axes
+   # theme(  # Customize theme to remove y-axis labels and ticks
+   #   axis.title.y = element_blank(),
+   #   axis.text.y= element_blank(),
+    #  axis.ticks.y = element_blank()
+   # )
+  
+  #fp <- file.path(dir_outS, paste0(y, ".png"))# Define the file path where the plot will be saved
+  
+  #ggsave(...) # Units of width and height (pixels)
+  
+#}# Close the loop
+
+
+#imgs <- list.files(...) # List all file names in the directory 'dir_out' and store them in 'imgs'
+#img_list <- lapply(imgs, image_read)  # Read each image file from the list of file names using 'image_read' and store them in 'img_list'
+
+
+
+#img_joined <- image_join(img_list) # Join the list of images into a single animated image using 'image_join'
+
+#img_animated <- image_animate(...) # Create an animated image from the joined image with a frame 
+#image_write(image = img_animated,
+         #   path = "outputs/Sherlock.gif")
+
+#img_animated
+```
+
+Solution
+
+```{r Exercise Solution }
+devtools::install_github("EmilHvitfeldt/sherlock")
+library(sherlock)
+
+SherlockTable <- holmes %>% #create a new file named AustenTable that will extract info from austen_books
+  group_by(book) %>% # group by every single book then
+  mutate( # manipulate the data to create
+    linenumber = row_number(), # a line number column that would count in which row the word was
+    chapter = cumsum(str_detect(text, # the chapter number. We can do so by using regex and find lines starting with chapter followed by a space and a letter 
+                                regex("^CHAPTER", 
+                                      ignore_case = TRUE)))) %>%
+  ungroup() %>% #  This line removes the grouping, so subsequent operations will be applied to the entire dataset rather than grouped subsets.
+  unnest_tokens(word, text) # This tokenises the text column, splitting it into individual words and creating a new row for each word
+
+head(SherlockTable)
+
+Sherlock_sentiment <- SherlockTable %>% 
+  inner_join(get_sentiments("bing"), relationship = 'many-to-many') %>% # Join the dataset with the Bing lexicon sentiment dictionary
+  group_by(book, chapter) %>%   # Group the dataset by book and chapter
+  mutate(index = rep(1:10, each = ceiling(n() / 10), length.out = n())) %>% # Create an index to split the chapters into 10 segments no matter how long the chapter it is 
+  group_by(book, chapter, index) %>% # Regroup the dataset by book, chapter, and index
+  count(sentiment) %>%  # Count the occurrences of each sentiment within each segment
+  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %>% # Reshape the data from long to wide format
+  mutate(sentiment = positive - negative,index= as.factor(index))%>%  # Calculate sentiment score (positive - negative) for each segment
+  filter(!chapter=="0") # Filter out chapters with the value "0" (if any)
+
+head(Sherlock_sentiment)
+
+
+dir_outS <- file.path("outputs/Sherlock") # Define the directory path where the outputs will be saved
+dir.create(dir_outS, recursive = TRUE) # Create the directory if it doesn't already exist
+
+books2 <- unique(Sherlock_sentiment$book)
+books2 
+
+most_chapter <- max(Sherlock_sentiment$chapter, na.rm = TRUE)# Find the maximum chapter number in the dataset 
+most_chapter
+
+
+for (y in books2) {# Iterate over each book in the 'books' vector y is the name we are going to the iteration variable it can be anything as long as you are consistent
+  
+  p <- # p is just a name we are giving to the plot again you can change it as long as you are consistent
+    Sherlock_sentiment %>%
+    filter(book == y) %>% 
+    ggplot(aes(chapter,index, fill= sentiment)) +  # Create a ggplot object with chapter, index, and sentiment as aesthetics
+    geom_tile() +# Add a tile layer to create a heatmap
+    scale_x_continuous(breaks=seq(1,most_chapter,1), expand = c(0,0))+  # Customise x-axis scale to show breaks from 1 to 'most_chapter'
+    scale_fill_gradient(low="blue", high="red", limits = c(-20, 40))+# Customise fill scale to use a gradient from blue to red
+    theme_bw()+ # Apply a black-and-white theme
+    guides(fill="none")+  # Remove the fill legend
+    ggtitle(y)+ # Add a title to the plot with the current book's name
+    coord_fixed(ratio = 1, ylim = c(10,1), xlim = c(0.5,most_chapter+0.5))+  # Fix the aspect ratio and set limits for y and x axes
+    theme(  # Customize theme to remove y-axis labels and ticks
+      axis.title.y = element_blank(),
+      axis.text.y= element_blank(),
+      axis.ticks.y = element_blank()
+    )
+  
+  fp <- file.path(dir_outS, paste0(y, ".png"))# Define the file path where the plot will be saved
+  
+  ggsave(plot = p,  # Save the ggplot object as a PNG file
+         filename = fp,   # File path where the plot will be saved
+         device = "png", # Output device type (PNG format)
+         width=3500,# Width of the output in pixels
+         height = 1000, # Height of the output in pixels
+         units = "px") # Units of width and height (pixels)
+  
+}# Close the loop
+
+
+imgs <- list.files(dir_outS, full.names = TRUE) # List all file names in the directory 'dir_out' and store them in 'imgs'
+img_list <- lapply(imgs, image_read)  # Read each image file from the list of file names using 'image_read' and store them in 'img_list'
+
+img_joined <- image_join(img_list) # Join the list of images into a single animated image using 'image_join'
+
+img_animated <- image_animate(img_joined, fps = 1) # Create an animated image from the joined image with a frame 
+image_write(image = img_animated,
+            path = "outputs/Sherlock.gif")
+
+img_animated
+```
+
+THE END
