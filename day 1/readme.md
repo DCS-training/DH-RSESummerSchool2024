@@ -30,7 +30,7 @@
 ### Data Visualisation with R
 
 You can either run the code on your own machine or through Posit (RStudio Online IDE).
-Below are the instructions for setting up on Posit or locally. If you just want to look the output you can use [this link](https://htmlpreview.github.io/?https://github.com/DCS-training/DH-RSESummerSchool2024/blob/main/day%201/DataVisWithR/DataVis.html)
+Below are the instructions for setting up on Posit or locally. If you just want to look the output you can use [this link](https://github.com/DCS-training/DH-RSESummerSchool2024/blob/main/day%201/DataVisWithR/DataVis.html)
 
 #### On Posit
 
