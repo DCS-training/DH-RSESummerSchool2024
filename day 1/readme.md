@@ -38,8 +38,11 @@ Below are the instructions for setting up on Posit or locally.
 2. Signup either via Gmail or GitHub
 3. Go on New Project
 4. New Project from Git Repository
-5. Copy and Paste this repository URL [https://github.com/DCS-training/DH-RSESummerSchool2024/tree/main/day%201/DataVisWithR](https://github.com/DCS-training/DH-RSESummerSchool2024/tree/main/day%201/DataVisWithR) as the Repository URL
+5. Copy and Paste this repository URL [https://github.com/DCS-training/DH-RSESummerSchool2024](https://github.com/DCS-training/DH-RSESummerSchool2024) as the Repository URL
 6. The Project directory name will filled in automatically
+7. Navigate to Day1 >DataVisWithR
+8. Click on `DataVisDHRSE.Rproj` (this is important to reset the working directory correctly)
+9. Click on `DataVis.Rmd`
 
 #### Locally
 
@@ -93,6 +96,9 @@ Once you have R and R Studio installed, open R Studio
 2.  Enter the Repository URL [https://github.com/DCS-training/DH-RSESummerSchool2024/tree/main/day%201/DataVisWithR](https://github.com/DCS-training/DH-RSESummerSchool2024/tree/main/day%201/DataVisWithR)
 3.  Select the Name for the directory project and where to save it
 4.  Press Create Project
+5.  Navigate to Day1 >DataVisWithR
+6.  Click on `DataVisDHRSE.Rproj` (this is important to reset the working directory correctly)
+7.  Click on `DataVis.Rmd`
 
 #### Installation of Needed Packages
 
