@@ -13,7 +13,7 @@ Sustainability is about ensuring the continued existence of your work, for yours
 
 ### Schedule
 - 09.00-09:15 **Introduction & Society for Research Software Engineering talk** (Mary Chester-Kadwell)
-- 09.15-09:45 Talk: **Encouraging Sustainability in Digital Humanities Projects**
+- 09.15-09:45 Talk: **Digital Humanities Sustainability: Reflections and Provocations** [(Chris Sparks)](https://www.qmul.ac.uk/history/people/academic-staff/profiles/sparkschris.html)
 - 09:45-10:15 Talk: **Bridging the Gap between Philology of Middle Eastern Texts and Data Science** [(Estara Arrant)](https://www.lib.cam.ac.uk/collections/departments/taylor-schechter-genizah-research-unit/unit-staff/dr-estara-arrant)
 - 10:15-10:30 Panel: **Careers in RSE and DH**
 - 10:30-11:00 Break
