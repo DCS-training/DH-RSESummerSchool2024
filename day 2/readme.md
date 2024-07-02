@@ -27,6 +27,8 @@ Sustainability is about ensuring the continued existence of your work, for yours
 ### On-the-day slides and instructions
 - Summer School sponsor talk: Society of Research Software Engineering [slides](https://docs.google.com/presentation/d/1mpNCRzrIM_XhWbhsXWKah2c6jcT7iHTwQ2bVeiETZRA/edit?usp=sharing)
 - Introduction to Best Practices for Sustainable Code [slides](https://docs.google.com/presentation/d/1AcgG6ZgsKkul_8cDQsWbcrlQ3U44xcN8FPNQHoDRVKk/edit?usp=sharing)
+- Applying Best Practices for Sustainable Code: [Workshop Brief](Workshop_Brief.pdf)
+- Applying Best Practices for Sustainable Code: [Working on the Workshop Repository](Working_on_the_Workshop_Repository.pdf)
 - More coming soon
 
 #### Repository links for Jonathan's talk and exercise
