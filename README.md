@@ -1,4 +1,4 @@
-# Digital Humanities Research Software Engineering Summer School 2024
+# My DHRSE Summer School Repo :)
 ## 02-05 July 2024
 
 Welcome to the repository of the [DH RSE Summer School 2024]([https://www.cdh.cam.ac.uk/events/36442/](https://www.cdcs.ed.ac.uk/DHRSE-Summer-School-2024)). Here you will 
