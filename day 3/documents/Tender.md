@@ -6,8 +6,6 @@ Our museum boasts a unique collection of artifacts and exhibits that highlight t
 
 To further immerse our visitors in the museum experience, we are interested in integrating XR applications to enhance the physical tour, offering interactive elements and contextual information through visitors' smartphones or museum-provided devices.
 
-A optional aspect of this project is the development of an engaging and user-friendly online platform. This platform should not only host the virtual tours and AR content but also serve as an educational resource with detailed information about the exhibits, high-resolution images, and interactive features. It should be accessible on various devices, ensuring that people from all backgrounds can explore our museum from anywhere in the world.
-
 We are particularly interested in solutions that prioritize the following:
 1. **Cost-effectiveness**: Innovative approaches that maximize our budget without compromising quality.
 2. **Scalability**: Systems and platforms that can grow with our collection and audience.
