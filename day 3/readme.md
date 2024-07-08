@@ -20,7 +20,7 @@ an imagined scenario.
 - __**Bring an object you would like to scan in 3D to become part of your exhibition**__
 
 ### On-the-day slides and instructions
-- TO DO
+- Introduction of SSI and its Fellowship Programme [Link to Slides](https://github.com/DCS-training/DH-RSESummerSchool2024/blob/main/day%203/Slides/DHRSE%20SummerschoolSSIPresentation.pdf)
 
 ### Schedule
 
