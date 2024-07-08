@@ -24,6 +24,14 @@
 - [Lisa Otty](https://efi.ed.ac.uk/people/lisa-otty/), Centre for Data, Culture & Society
 - [Lucia Michielin](https://efi.ed.ac.uk/people/lucia-michielin/), Centre for Data, Culture & Society
 - [Sarah Schöttler](https://sarahschoettler.com/), Centre for Data, Culture & Society
+- [Will Lamb](https://www.ed.ac.uk/profile/william-lamb), Professor in Gaelic Ethnology and Linguistics University of Edinburgh
+
+## On-the-day slides and instructions
+- Summer School Intro ([Lisa Otty](https://efi.ed.ac.uk/people/lisa-otty/), [Lucia Michielin](https://efi.ed.ac.uk/people/lucia-michielin/)) [Slides](https://github.com/DCS-training/DH-RSESummerSchool2024/blob/main/day%201/Slides/Day1Intro.pdf)
+- Coding my way out of a box: Achieving emancipation and collaboration through the Digital Humanities ([Will Lamb](https://www.ed.ac.uk/profile/william-lamb)) [Slides](https://github.com/DCS-training/DH-RSESummerSchool2024/blob/main/day%201/Slides/Day1WillLamb.pdf)
+- DH&RSE at Edinburgh ([Alexis Pister](https://efi.ed.ac.uk/people/alexis-pister/), [Ed Mackenzie](https://efi.ed.ac.uk/people/ed-mackenzie/), [Evan Morgan](https://www.designinformatics.org/person/evan-morgan/)) [Slides](https://github.com/DCS-training/DH-RSESummerSchool2024/blob/main/day%201/Slides/Day1DH%26RSEInEdinburgh.pdf)
+- Data Visualisation with R ([Lucia Michielin](https://efi.ed.ac.uk/people/lucia-michielin/), [Aislinn Keogh](https://aislinnkeogh.github.io/))[Slides](https://github.com/DCS-training/DH-RSESummerSchool2024/blob/main/day%201/Slides/Day1DataVisWithR.pdf)
+- Data Visualisation with D3 ([Sarah Schöttler](https://sarahschoettler.com/), [Aislinn Keogh](https://aislinnkeogh.github.io/)) [Slides](https://github.com/DCS-training/DH-RSESummerSchool2024/blob/main/day%201/Slides/Day1DataVisWithD3.pdf)
 
 ## Workshop Setting up
 
